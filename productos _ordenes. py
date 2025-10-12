@@ -1,1 +1,16 @@
 Sistema para gestionar productos analizar pedidos y ayuda básica en inventarios 
+
+# Consulta para mostrar pedidos con nombres y productos 
+
+-- Query to show orders with client and product names
+SELECT 
+    orders.ID,
+    clients.Name AS Client,
+    products.Name AS Product
+FROM orders
+JOIN clients 
+    ON orders.ClientID = clients.ID
+JOIN order_details 
+    ON orders.ID = order_details.OrderID
+JOIN products 
+    ON order_details.ProductID = products.ID; 
